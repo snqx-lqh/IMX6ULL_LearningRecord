@@ -61,7 +61,7 @@
     <configuration
       Name="Debug"
       c_preprocessor_definitions="CPU_MCIMX6Y2CVM08"
-      c_user_include_directories="./Source/BSP.;./Source/drivers.;./Source/CORTEXA/Include.;./Source/CMSIS/Include.;./Source/utilities.;./Source."
+      c_user_include_directories="./Source/BSP;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source"
       linker_output_format="bin" />
     <configuration Name="Release" link_dedupe_code="Yes" />
     <configuration
@@ -73,12 +73,18 @@
     <folder Name="Source">
       <folder Name="APP">
         <file file_name="Source/APP/main.c" />
+        <file file_name="Source/APP/mpu6050.c" />
+        <file file_name="Source/APP/mpu6050.h" />
+        <file file_name="Source/APP/w25q128.c" />
+        <file file_name="Source/APP/w25q128.h" />
       </folder>
       <folder Name="BSP">
         <file file_name="Source/BSP/bsp_beep.c" />
         <file file_name="Source/BSP/bsp_beep.h" />
         <file file_name="Source/BSP/bsp_clk.c" />
         <file file_name="Source/BSP/bsp_clk.h" />
+        <file file_name="Source/BSP/bsp_delay.c" />
+        <file file_name="Source/BSP/bsp_delay.h" />
         <file file_name="Source/BSP/bsp_epit.c" />
         <file file_name="Source/BSP/bsp_epit.h" />
         <file file_name="Source/BSP/bsp_exti.c" />

@@ -12,6 +12,6 @@
 void bsp_exti_init(void);					/* 中断初始化 */
 void gpio1_io18_irqhandler(void); 			/* 中断处理函数 */
 
-extern volatile bool g_InputSignal;
+ 
 
 #endif

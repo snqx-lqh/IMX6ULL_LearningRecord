@@ -8,9 +8,7 @@
 #include "fsl_gpio.h" 
 #include "fsl_epit.h" 
 
-void bsp_epit_init(void);
-
-extern volatile bool epitIsrFlag;
-
+void bsp_epit1_init(uint32_t us);
+ 
 #endif
 

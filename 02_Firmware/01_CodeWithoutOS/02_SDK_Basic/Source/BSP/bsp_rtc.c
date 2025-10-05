@@ -18,8 +18,6 @@ void bsp_rtc_init(void)
     SNVS_HP_RTC_GetDefaultConfig(&snvsRtcConfig);
     SNVS_HP_RTC_Init(SNVS, &snvsRtcConfig);
 
- 
-
     /* Set a start date time and start RT */
     rtcDate.year = 2014U;
     rtcDate.month = 12U;

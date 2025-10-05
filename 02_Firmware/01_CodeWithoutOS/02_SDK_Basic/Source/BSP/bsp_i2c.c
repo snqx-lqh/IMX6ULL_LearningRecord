@@ -1,22 +1,28 @@
 #include "bsp_i2c.h"
 
-#define EXAMPLE_I2C_MASTER_BASEADDR I2C2
+ 
 #define I2C_MASTER_CLK_FREQ (CLOCK_GetFreq(kCLOCK_IpgClk) / \
                             (CLOCK_GetDiv(kCLOCK_PerclkDiv) + 1U))
 
-#define I2C_MASTER_SLAVE_ADDR_7BIT 0x7EU
-#define I2C_BAUDRATE 100000U
-#define I2C_DATA_LENGTH 32U
-
-uint8_t g_master_txBuff[I2C_DATA_LENGTH];
-uint8_t g_master_rxBuff[I2C_DATA_LENGTH];
-volatile bool g_MasterCompletionFlag = false;
-
-void bsp_i2c_init(void)
+void bsp_i2c1_master_init(void)
 {
     i2c_master_config_t masterConfig;
     uint32_t sourceClock;
     
+    IOMUXC_SetPinConfig(IOMUXC_UART4_RX_DATA_I2C1_SDA, 
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U));
+    IOMUXC_SetPinMux(IOMUXC_UART4_TX_DATA_I2C1_SCL, 1U);
+    IOMUXC_SetPinConfig(IOMUXC_UART4_TX_DATA_I2C1_SCL, 
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U));
+
 	/*
      * masterConfig->baudRate_Bps = 100000U;
      * masterConfig->enableHighDrive = false;
@@ -25,41 +31,45 @@ void bsp_i2c_init(void)
      * masterConfig->enableMaster = true;
      */
     I2C_MasterGetDefaultConfig(&masterConfig);
-    masterConfig.baudRate_Bps = I2C_BAUDRATE;
+    masterConfig.baudRate_Bps = 100000U;
 
     sourceClock = I2C_MASTER_CLK_FREQ;
 
-    I2C_MasterInit(EXAMPLE_I2C_MASTER_BASEADDR, &masterConfig, sourceClock);
-
+    I2C_MasterInit(I2C1, &masterConfig, sourceClock);
 }
-
-void i2c_write_bytes(void)
+ 
+void i2c_master_write_bytes(I2C_Type *I2C,uint8_t addr,uint8_t reg,
+                                        uint8_t *data,uint32_t len)
 {
     i2c_master_transfer_t masterXfer;
     memset(&masterXfer, 0, sizeof(masterXfer));
 
-    masterXfer.slaveAddress = I2C_MASTER_SLAVE_ADDR_7BIT;
+    masterXfer.slaveAddress = addr;
     masterXfer.direction = kI2C_Write;
-    masterXfer.subaddress = (uint32_t)NULL;
-    masterXfer.subaddressSize = 0;
-    masterXfer.data = g_master_txBuff;
-    masterXfer.dataSize = I2C_DATA_LENGTH;
+    masterXfer.subaddress = reg;
+    masterXfer.subaddressSize = 1;
+    masterXfer.data = data;
+    masterXfer.dataSize = len;
     masterXfer.flags = kI2C_TransferDefaultFlag;
 
-    I2C_MasterTransferBlocking(EXAMPLE_I2C_MASTER_BASEADDR, &masterXfer);
+    I2C_MasterTransferBlocking(I2C, &masterXfer);
 }
 
-void i2c_read_bytes(void)
+void i2c_master_read_bytes(I2C_Type *I2C,uint8_t addr,uint8_t reg,
+                                        uint8_t *data,uint32_t len)
 {
     i2c_master_transfer_t masterXfer;
-    masterXfer.slaveAddress = I2C_MASTER_SLAVE_ADDR_7BIT;
-    masterXfer.direction = kI2C_Read;
-    masterXfer.subaddress = (uint32_t)NULL;
-    masterXfer.subaddressSize = 0;
-    masterXfer.data = g_master_rxBuff;
-    masterXfer.dataSize = I2C_DATA_LENGTH;
+    memset(&masterXfer, 0, sizeof(masterXfer));
 
+    masterXfer.slaveAddress = addr;
+    masterXfer.direction = kI2C_Read;
+    masterXfer.subaddress = reg;
+    masterXfer.subaddressSize = 1;
+    masterXfer.data = data;
+    masterXfer.dataSize = len;
     masterXfer.flags = kI2C_TransferDefaultFlag;
 
-    I2C_MasterTransferBlocking(EXAMPLE_I2C_MASTER_BASEADDR, &masterXfer);
+    I2C_MasterTransferBlocking(I2C, &masterXfer);
 }
+
+ 

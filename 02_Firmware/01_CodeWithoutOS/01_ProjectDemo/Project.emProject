@@ -60,7 +60,7 @@
       project_type="Executable" />
     <configuration
       Name="Debug"
-      c_user_include_directories="./Source/BSP."
+      c_user_include_directories="./Source/BSP;."
       linker_output_format="bin" />
     <configuration Name="Release" link_dedupe_code="Yes" />
     <configuration

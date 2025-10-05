@@ -1,17 +1,5 @@
- /***************************************************************
-Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
-文件名	: 	 bsp_exit.c
-作者	   : 左忠凯
-版本	   : V1.0
-描述	   : 外部中断驱动。
-其他	   : 配置按键对应的GPIP为中断模式
-论坛 	   : www.wtmembed.com
-日志	   : 初版V1.0 2019/1/4 左忠凯创建
-***************************************************************/
 #include "bsp_exti.h"
-#include "bsp_led.h"
-
-volatile bool g_InputSignal = false;
+#include "bsp_beep.h"
 
 /*
  * @description			: 初始化外部中断
@@ -48,11 +36,9 @@ void gpio1_io18_irqhandler(void)
 	if(GPIO_ReadPinInput(GPIO1, 18) == 0)	/* 按键按下了  */
 	{
 		state = !state;
-		led_switch(state);
+		beep_switch(state);
 	}
-	 GPIO_ClearPinsInterruptFlags(GPIO1, 1U << 18);
-	 g_InputSignal = true;
-	  
+	 GPIO_ClearPinsInterruptFlags(GPIO1, 1U << 18);  
 }
 
 

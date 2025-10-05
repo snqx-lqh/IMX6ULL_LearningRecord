@@ -1,42 +1,37 @@
 #include "bsp_epit.h"
 
-#define EPIT_IRQ_ID    EPIT1_IRQn
-#define EXAMPLE_EPIT   EPIT1
-/* Get source clock for EPIT driver (EPIT prescaler = 0) */
-#define EXAMPLE_EPIT_CLK_FREQ (CLOCK_GetFreq(kCLOCK_IpgClk) / \
+ 
+/* 获得EPIT的时钟 */
+#define GET_EPIT_CLK_FREQ     (CLOCK_GetFreq(kCLOCK_IpgClk) / \
                               (CLOCK_GetDiv(kCLOCK_PerclkDiv) + 1U))
 
-volatile bool epitIsrFlag = false;
+ 
+__attribute__((weak)) void EPIT1_IRQHander_Callback(void){}
 
-void EXAMPLE_EPIT_IRQHandler(void)
+void EPIT1_IRQHander(void)
 {
-    /* Clear interrupt flag.*/
-    EPIT_ClearStatusFlags(EXAMPLE_EPIT, kEPIT_OutputCompareFlag);
-    epitIsrFlag = true;
+    // 清除中断标志位
+    EPIT_ClearStatusFlags(EPIT1, kEPIT_OutputCompareFlag);
+    EPIT1_IRQHander_Callback(); 
 }
 
-void bsp_epit_init(void)
+
+void bsp_epit1_init(uint32_t us)
 {
-/* Structure of initialize EPIT */
     epit_config_t epitConfig;
-	/* Tricky here: As IRQ handler in example doesn't use parameters, just ignore them */
-    SystemInstallIrqHandler(EPIT1_IRQn, (system_irq_handler_t)(uint32_t)EXAMPLE_EPIT_IRQHandler, NULL);
-
+	// 注册中断服务函数
+    SystemInstallIrqHandler(EPIT1_IRQn, (system_irq_handler_t)(uint32_t)EPIT1_IRQHander, NULL);
+    // 初始化 EPIT 配置
     EPIT_GetDefaultConfig(&epitConfig);
-
-    /* Init EPIT module */
-    EPIT_Init(EXAMPLE_EPIT, &epitConfig);
-
-    /* Set timer period */
-    EPIT_SetTimerPeriod(EXAMPLE_EPIT, USEC_TO_COUNT(2000000U, EXAMPLE_EPIT_CLK_FREQ) - 1);
-    EPIT_SetOutputCompareValue(EXAMPLE_EPIT, 0);
-
-    /* Enable output compare interrupts */
-    EPIT_EnableInterrupts(EXAMPLE_EPIT, kEPIT_OutputCompareInterruptEnable);
-
-    /* Enable at the Interrupt */
-    EnableIRQ(EPIT_IRQ_ID);
-
-    /* Start Timer */
-    EPIT_StartTimer(EXAMPLE_EPIT);
+    // 初始化 EPIT
+    EPIT_Init(EPIT1, &epitConfig);
+    // 设置定时器分频 Count是us
+    EPIT_SetTimerPeriod(EPIT1, USEC_TO_COUNT(us, GET_EPIT_CLK_FREQ) - 1);
+    EPIT_SetOutputCompareValue(EPIT1, 0);
+    // 使能输出比较中断
+    EPIT_EnableInterrupts(EPIT1, kEPIT_OutputCompareInterruptEnable);
+    // 使能中断
+    EnableIRQ(EPIT1_IRQn);
+    // 开始定时器
+    EPIT_StartTimer(EPIT1);
 }

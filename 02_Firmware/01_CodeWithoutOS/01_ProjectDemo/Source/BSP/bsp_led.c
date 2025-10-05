@@ -16,7 +16,7 @@ void led_init(void)
 {
 	SW_MUX_GPIO1_IO03 = 0x5;	/* 复用为GPIO1_IO03 */
 	SW_PAD_GPIO1_IO03 = 0X10B0;		
-	GPIO1_GDIR = 0X0000008;	/* GPIO1_IO03设置为输出 */
+	GPIO1_GDIR = 0X0000008;	/* GPIO1_IO03设置为输出 */                                                               
 	GPIO1_DR = 0X0;
 }
 

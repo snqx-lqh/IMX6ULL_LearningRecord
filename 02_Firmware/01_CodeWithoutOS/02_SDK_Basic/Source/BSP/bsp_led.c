@@ -11,7 +11,7 @@ void bsp_led_init(void)
     IOMUXC_SetPinMux(IOMUXC_GPIO1_IO03_GPIO1_IO03, 0U);
 
     // 配置引脚属性
-    IOMUXC_SetPinConfig(IOMUXC_GPIO1_IO03_GPIO1_IO03, IOMUXC_SW_PAD_CTL_PAD_DSE(7U) | IOMUXC_SW_PAD_CTL_PAD_PUS(3U));
+    IOMUXC_SetPinConfig(IOMUXC_GPIO1_IO03_GPIO1_IO03, 0x10B0);
 
     // 初始化 GPIO1_IO03 为输出低电平
     GPIO_PinInit(GPIO1, 3U, &led_config);

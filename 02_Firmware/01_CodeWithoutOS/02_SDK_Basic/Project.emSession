@@ -40,38 +40,9 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="2" useTextEdit="1" path="Source/BSP/bsp_exti.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="20" useTextEdit="1" path="Source/BSP/bsp_exti.c" left="0" top="15" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="147" useTextEdit="1" path="Source/system_MCIMX6Y2.h" left="0" top="132" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="262" useTextEdit="1" path="System/ARM_Startup.s" left="0" top="247" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="88" useTextEdit="1" path="Source/APP/main.c" left="0" top="74" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/BSP/bsp_clk.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="61" y="21" useTextEdit="1" path="Source/BSP/bsp_led.c" left="0" top="4" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/BSP/bsp_key.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="289" useTextEdit="1" path="Source/BSP/bsp_uart.c" left="0" top="280" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="8" useTextEdit="1" path="Source/BSP/bsp_beep.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3" useTextEdit="1" path="Source/BSP/bsp_beep.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="13" useTextEdit="1" path="Source/BSP/bsp_led.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="30" useTextEdit="1" path="Source/BSP/bsp_epit.c" left="0" top="11" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3" useTextEdit="1" path="Source/BSP/bsp_epit.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="45" useTextEdit="1" path="Source/BSP/bsp_rtc.c" left="0" top="15" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="11" useTextEdit="1" path="Source/BSP/bsp_rtc.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="15" y="46" useTextEdit="1" path="Source/utilities/fsl_debug_console.h" left="0" top="44" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="117" useTextEdit="1" path="Source/utilities/fsl_debug_console.c" left="0" top="113" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="34" useTextEdit="1" path="Source/drivers/fsl_common.h" left="0" top="34" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="31" useTextEdit="1" path="Source/BSP/bsp_uart.h" left="0" top="4" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" path="Source/BSP/bsp_i2c.c" left="0" top="30" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3" useTextEdit="1" path="Source/BSP/bsp_i2c.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="130" useTextEdit="1" path="Source/drivers/fsl_i2c.h" left="0" top="100" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="115" useTextEdit="1" path="Source/BSP/bsp_spi.c" left="0" top="94" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="12" useTextEdit="1" path="Source/BSP/bsp_spi.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="35" y="752" useTextEdit="1" path="Source/drivers/fsl_iomuxc.h" left="0" top="740" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="29" y="272" useTextEdit="1" path="Source/drivers/fsl_ecspi.h" left="0" top="261" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="237" useTextEdit="1" path="Source/drivers/fsl_ecspi.c" left="0" top="231" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="289" useTextEdit="1" path="Source/BSP/bsp_emmc.c" left="0" top="289" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="11" y="694" useTextEdit="1" path="Source/drivers/fsl_usdhc.h" left="0" top="677" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="9" useTextEdit="1" path="Source/BSP/bsp_emmc.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/BSP/cc.h" left="0" selected="1" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="8" useTextEdit="1" path="Source/APP/main.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/mpu6050.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/w25q128.c" left="0" selected="1" top="90" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Project" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="F:/Project/IMX6ULL_LearningRecord/02_Firmware/01_CodeWithoutOS/02_SDK/Source/BSP" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <EMStudioWindow activeProject="Project" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="D:/Project/IMX6ULL_LearningRecord/02_Firmware/01_CodeWithoutOS/02_SDK_Basic/Source/BSP" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

@@ -6,10 +6,11 @@
 #include "fsl_iomuxc.h"
 #include "core_ca7.h"
 #include "fsl_ecspi.h" 
+#include "fsl_gpio.h" 
 
-void bsp_spi_init(void);
-void w25q128_read_id(void);
-void spi_cycle_exp(void);
+void    bsp_spi_init(void);
+uint8_t spi_read_write_byte(uint8_t txByte);
+void    spi_cycle_exp(void);
 
 #endif
 
