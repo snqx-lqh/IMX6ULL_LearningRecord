@@ -40,9 +40,9 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="8" useTextEdit="1" path="Source/APP/main.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="47" y="80" useTextEdit="1" path="Source/APP/main.c" left="0" selected="1" top="69" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/mpu6050.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/w25q128.c" left="0" selected="1" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/w25q128.c" left="0" top="90" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="Project" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="D:/Project/IMX6ULL_LearningRecord/02_Firmware/01_CodeWithoutOS/02_SDK_Basic/Source/BSP" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
