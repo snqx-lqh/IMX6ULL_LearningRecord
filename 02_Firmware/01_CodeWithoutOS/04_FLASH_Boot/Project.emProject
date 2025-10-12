@@ -62,7 +62,7 @@
       Name="Debug"
       arm_compiler_variant="SEGGER"
       c_preprocessor_definitions="CPU_MCIMX6Y2CVM08"
-      c_user_include_directories="./Source/BSP;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source;./Source/middleware/sdmmc_2.1.2/inc;./Source/middleware/sdmmc_2.1.2/port;./Source/middleware/sdmmc_2.1.2/src;."
+      c_user_include_directories="./Source/BSP;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source;./Source/middleware/sdmmc_2.1.2/inc;./Source/middleware/sdmmc_2.1.2/port;./Source/middleware/sdmmc_2.1.2/src;./Source/letter-shell-shell2.x;."
       gcc_c_language_standard="gnu99"
       linker_additional_files="-u _printf_float"
       linker_output_format="bin" />
