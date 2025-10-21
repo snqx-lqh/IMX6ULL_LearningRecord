@@ -15,6 +15,9 @@
   <ProjectSessionItem path="Project;Project;Source"/>
   <ProjectSessionItem path="Project;Project;Source;APP"/>
   <ProjectSessionItem path="Project;Project;Source;BSP"/>
+  <ProjectSessionItem path="Project;Project;Source;CMSIS"/>
+  <ProjectSessionItem path="Project;Project;Source;CORTEXA"/>
+  <ProjectSessionItem path="Project;Project;Source;SYSTEM"/>
   <ProjectSessionItem path="Project;Project;System"/>
  </Project>
  <Register1/>
@@ -40,9 +43,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="47" y="80" useTextEdit="1" path="Source/APP/main.c" left="0" selected="1" top="69" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="55" useTextEdit="1" path="Source/APP/main.c" left="0" selected="1" top="33" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/mpu6050.c" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/APP/w25q128.c" left="0" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="118" useTextEdit="1" path="Source/SYSTEM/board.c" left="0" top="97" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="31" useTextEdit="1" path="Source/SYSTEM/board.h" left="0" top="14" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Project" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="D:/Project/IMX6ULL_LearningRecord/02_Firmware/01_CodeWithoutOS/02_SDK_Basic/Source/BSP" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <EMStudioWindow activeProject="Project" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="F:/Project/IMX6ULL_LearningRecord/02_Firmware/01_CodeWithoutOS/02_SDK_Basic/Source/SYSTEM" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

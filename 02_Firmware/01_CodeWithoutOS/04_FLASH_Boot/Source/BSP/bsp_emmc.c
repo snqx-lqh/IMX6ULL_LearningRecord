@@ -7,9 +7,73 @@ static mmc_card_t g_mmc;
 static void CardInformationLog(mmc_card_t *card);
 void Test_MMC_ReadWrite(void);
 
+void emmc_pinmux_init(void)
+{
+    IOMUXC_SetPinMux(IOMUXC_GPIO1_IO09_GPIO1_IO09, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_GPIO1_IO09_GPIO1_IO09, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_RE_B_USDHC2_CLK, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_RE_B_USDHC2_CLK, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_WE_B_USDHC2_CMD, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_WE_B_USDHC2_CMD, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_DATA00_USDHC2_DATA0, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_DATA00_USDHC2_DATA0, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_DATA01_USDHC2_DATA1, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_DATA01_USDHC2_DATA1, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_DATA02_USDHC2_DATA2, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_DATA02_USDHC2_DATA2, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_NAND_DATA03_USDHC2_DATA3, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_NAND_DATA03_USDHC2_DATA3, 
+                        IOMUXC_SW_PAD_CTL_PAD_SRE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_DSE(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_SPEED(2U) |
+                        IOMUXC_SW_PAD_CTL_PAD_PKE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
+                        IOMUXC_SW_PAD_CTL_PAD_PUS(1U) |
+                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+}
+
 void bsp_emmc_init(void)
 {
-    mmc_card_t *card = &g_mmc;    
+    mmc_card_t *card = &g_mmc; 
+    emmc_pinmux_init();   
     CLOCK_SetDiv(kCLOCK_Usdhc2Div, 0U);
     card->host.base = MMC_HOST_BASEADDR;
     card->host.sourceClock_Hz = MMC_HOST_CLK_FREQ;  
@@ -46,7 +110,7 @@ void Test_MMC_ReadWrite(void)
 
     MMC_WriteBlocks(&g_mmc, writeData, 80, 1);
     MMC_ReadBlocks(&g_mmc, readData, 80, 1);
-    uart_printf("MMC READ:%s",readData);
+    uart_printf("MMC READ:%s\r\n",readData);
 }
 
 static void CardInformationLog(mmc_card_t *card)

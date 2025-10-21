@@ -10,6 +10,8 @@
 #include "bsp_i2c.h"
 #include "bsp_spi.h"
 
+#include "board.h"
+
 #define I2C_MPU6050_DEMO 0
 #define SPI_W25Q128_DEMO 0
 
@@ -33,6 +35,8 @@ int main(void) {
     uint8_t  led_state = 0;
 	int ret;
     
+    BOARD_InitMemory();
+
     GIC_Init();
     SystemInitIrqTable();             //初始化中断向量表
 	__set_VBAR((uint32_t)0x87800000); // 中断向量表偏移，偏移到起始地址   
@@ -49,6 +53,8 @@ int main(void) {
 	bsp_rtc_init();
     bsp_i2c1_master_init();
 	bsp_spi_init();
+    
+    uart_printf("SDK Test Version %s\r\n","V1.0.0");
 
 #if I2C_MPU6050_DEMO
     bsp_i2c1_master_init();

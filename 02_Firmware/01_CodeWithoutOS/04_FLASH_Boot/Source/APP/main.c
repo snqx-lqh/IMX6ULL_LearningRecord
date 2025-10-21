@@ -10,6 +10,7 @@
 //#include "bsp_i2c.h"
 #include "bsp_spi.h"
 //#include "bsp_emmc.h"
+#include "board.h"
 
 #include "w25q128.h"
 #include "xmodem.h"
@@ -21,6 +22,8 @@ int main(void) {
 	int ret;
     uint8_t xmodem_start_flag=0;
     uint16_t w25_id = 0;
+    
+    BOARD_InitMemory();
 
     GIC_Init();
     SystemInitIrqTable();             //初始化中断向量表
@@ -48,6 +51,10 @@ int main(void) {
         if (w25_id == W25Q128 || w25_id == NM25Q128)
         {
             uart_printf("w25_id is W25Q128\r\n");
+            break;
+        }else if (w25_id == W25Q256 || w25_id == NM25Q256)
+        {
+            uart_printf("w25_id is W25Q256\r\n");
             break;
         }else{
             uart_printf("w25 init failed,w25_id is %x\r\n",w25_id);

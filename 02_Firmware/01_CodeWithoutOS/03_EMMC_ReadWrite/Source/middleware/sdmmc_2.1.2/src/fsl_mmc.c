@@ -593,10 +593,10 @@ static status_t MMC_StopTransmission(mmc_card_t *card)
 static status_t MMC_SwitchVoltage(mmc_card_t *card, uint32_t *opCode)
 {
     mmc_voltage_window_t tempVoltage;
-    uint32_t cvr_temp = card->ocr & MMC_OCR_V270TO360_MASK;
+    //uint32_t cvr_temp = card->ocr & MMC_OCR_V270TO360_MASK;
     /* Get host's voltage window. */
     if (((kHOST_SupportV330 != HOST_NOT_SUPPORT) || (kHOST_SupportV300 != HOST_NOT_SUPPORT)) &&
-        ( cvr_temp ) && ((card->hostVoltageWindowVCC == kMMC_VoltageWindowNone) ||
+        ( card->ocr & MMC_OCR_V270TO360_MASK ) && ((card->hostVoltageWindowVCC == kMMC_VoltageWindowNone) ||
                                                  (card->hostVoltageWindowVCC == kMMC_VoltageWindows270to360)))
     {
         /* Save host intended voltage range */
@@ -974,16 +974,8 @@ static void MMC_DecodeExtendedCsd(mmc_card_t *card, uint32_t *rawExtendedCsd)
     {
     }
     /* cache size unit 1kb */
-    uint32_t temp=0;
-    temp |= ((uint32_t)buffer[252U]) << 24;
-    temp |= ((uint32_t)buffer[251U]) << 16;
-    temp |= ((uint32_t)buffer[250U]) << 8;
-    temp |= ((uint32_t)buffer[249U]) ;
-
-    //temp = (((uint32_t)buffer[252U]) << 24) | (((uint32_t)buffer[251U]) << 16) |
-    //                         (((uint32_t)buffer[250U]) << 8) | (((uint32_t)buffer[249U]));
-    
-    extendedCsd->cacheSize = temp;
+    extendedCsd->cacheSize = (((uint32_t)buffer[252U]) << 24) | (((uint32_t)buffer[251U]) << 16) |
+                             (((uint32_t)buffer[250U]) << 8) | (((uint32_t)buffer[249U]));
     extendedCsd->supportedCommandSet = buffer[504U];
 }
 

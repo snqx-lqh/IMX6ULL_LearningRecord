@@ -62,10 +62,12 @@
       Name="Debug"
       arm_compiler_variant="SEGGER"
       c_preprocessor_definitions="CPU_MCIMX6Y2CVM08"
-      c_user_include_directories="./Source/BSP;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source;./Source/middleware/sdmmc_2.1.2/inc;./Source/middleware/sdmmc_2.1.2/port;./Source/middleware/sdmmc_2.1.2/src;./Source/letter-shell-shell2.x;."
+      c_user_include_directories="./Source/BSP;./Source/SYSTEM;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source;./Source/middleware/sdmmc_2.1.2/inc;./Source/middleware/sdmmc_2.1.2/port;./Source/middleware/sdmmc_2.1.2/src;./Source/letter-shell-shell2.x;."
       gcc_c_language_standard="gnu99"
       linker_additional_files="-u _printf_float"
-      linker_output_format="bin" />
+      linker_output_format="bin"
+      linker_printf_fp_enabled="Float"
+      linker_printf_width_precision_supported="Yes" />
     <configuration Name="Release" link_dedupe_code="Yes" />
     <configuration
       LIBRARY_IO_TYPE="SEMIHOST (host-formatted)"
@@ -207,6 +209,10 @@
           </folder>
         </folder>
       </folder>
+      <folder Name="SYSTEM">
+        <file file_name="Source/SYSTEM/board.c" />
+        <file file_name="Source/SYSTEM/board.h" />
+      </folder>
       <folder Name="utilities">
         <file file_name="Source/utilities/fsl_debug_console.c" />
         <file file_name="Source/utilities/fsl_debug_console.h" />
@@ -219,7 +225,6 @@
         <file file_name="Source/utilities/fsl_str.c" />
         <file file_name="Source/utilities/fsl_str.h" />
       </folder>
-      <file file_name="Source/board.h" />
       <file file_name="Source/fsl_device_registers.h" />
       <file file_name="Source/MCIMX6Y2.h" />
       <file file_name="Source/MCIMX6Y2_features.h" />

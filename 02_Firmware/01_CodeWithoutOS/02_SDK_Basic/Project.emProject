@@ -61,8 +61,10 @@
     <configuration
       Name="Debug"
       c_preprocessor_definitions="CPU_MCIMX6Y2CVM08"
-      c_user_include_directories="./Source/BSP;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source"
-      linker_output_format="bin" />
+      c_user_include_directories="./Source/BSP;./Source/SYSTEM;./Source/drivers;./Source/CORTEXA/Include;./Source/CMSIS/Include;./Source/utilities;./Source"
+      linker_output_format="bin"
+      linker_printf_fp_enabled="Float"
+      linker_printf_width_precision_supported="Yes" />
     <configuration Name="Release" link_dedupe_code="Yes" />
     <configuration
       LIBRARY_IO_TYPE="SEMIHOST (host-formatted)"
@@ -176,6 +178,10 @@
         <file file_name="Source/drivers/fsl_usdhc.h" />
         <file file_name="Source/drivers/fsl_wdog.c" />
         <file file_name="Source/drivers/fsl_wdog.h" />
+      </folder>
+      <folder Name="SYSTEM">
+        <file file_name="Source/SYSTEM/board.c" />
+        <file file_name="Source/SYSTEM/board.h" />
       </folder>
       <folder Name="utilities">
         <file file_name="Source/utilities/fsl_debug_console.c" />

@@ -15,6 +15,7 @@
 #define W25Q32 	0XEF15
 #define W25Q64 	0XEF16
 #define W25Q128	0XEF17
+#define W25Q256	0XEF18
 
 #define NM25Q80 	0X5213 	
 #define NM25Q16 	0X5214

@@ -1,0 +1,1 @@
+http://47.111.11.73/docs/boards/arm-linux/zdyz-i.mx6ullmini.html

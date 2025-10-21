@@ -11,11 +11,15 @@
 #include "bsp_spi.h"
 #include "bsp_emmc.h"
 
+#include "board.h"
+
 int main(void) {
     unsigned char a=0;
     uint8_t  led_state = 0;
 	int ret;
     
+    BOARD_InitMemory();
+
     GIC_Init();
     SystemInitIrqTable();             //初始化中断向量表
 	__set_VBAR((uint32_t)0x87800000); // 中断向量表偏移，偏移到起始地址   
