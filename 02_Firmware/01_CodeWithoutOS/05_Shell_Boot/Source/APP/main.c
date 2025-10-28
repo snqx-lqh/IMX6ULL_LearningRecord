@@ -66,6 +66,7 @@ int main(void) {
             break;
         }else{
             uart_printf("w25 init failed,w25_id is %x\r\n",w25_id);
+            delayms(500);
         }
 	}
     

@@ -120,6 +120,16 @@ void spi_read_write_bytes(uint32_t *txBuffer,uint32_t *rxBuffer,uint32_t len)
 	masterXfer.rxData = rxBuffer;
 	masterXfer.dataSize = len;
 	masterXfer.channel = kECSPI_Channel0;
+	ECSPI_MasterTransferBlocking(ECSPI3, &masterXfer);
+}
+
+void spi_read_write_bytes_it(uint32_t *txBuffer,uint32_t *rxBuffer,uint32_t len)
+{
+	ecspi_transfer_t masterXfer;
+	masterXfer.txData = txBuffer;
+	masterXfer.rxData = rxBuffer;
+	masterXfer.dataSize = len;
+	masterXfer.channel = kECSPI_Channel0;
 	ECSPI_MasterTransferNonBlocking(ECSPI3, &g_m_handle, &masterXfer);
 
     /* Wait transfer complete */

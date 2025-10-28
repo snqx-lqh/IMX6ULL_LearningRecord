@@ -166,11 +166,60 @@ void cmd_loadx(int argc, char **argv)
     //spi_read_write_byte(0x55);
 }
 
+void W25QXX_BASIC_TEST(void);
+
 void cmd_flash(int argc, char **argv)
 {
-    uart_printf("Receive Start\r\n");
-    W25QXX_Erase_Sectors(0,100); // 从地址0开始，擦除100块，也就是100*4KB = 400 KB
-    uart_printf("Flash erase finish\r\n");
-    XmodemReceiveData(0X400);
-    uart_printf("\r\nReceive Finish\r\n");
+    if (strcmp(argv[1], "xmodem") == 0)
+    {
+        uart_printf("Receive Start\r\n");
+        W25QXX_Erase_Sectors(0,100); // 从地址0开始，擦除100块，也就是100*4KB = 400 KB
+        uart_printf("Flash erase finish\r\n");
+        XmodemReceiveData(0X400);
+        uart_printf("\r\nReceive Finish\r\n");
+    }
+    else if (strcmp(argv[1], "test") == 0)
+    {
+        W25QXX_BASIC_TEST();
+    }
+    else
+    {
+        uart_printf("unknow cmd: %s\r\n", argv[1]);
+    }
+
+}
+
+void W25QXX_BASIC_TEST(void)
+{
+    uint32_t testAddr = 0x0080000;
+    uint8_t WriteData[5] = {0x19,0x28,0x55,0x82,0x91};
+    uint8_t ReadData[5]  = {0};
+    // 1.读取 指定地址的数据
+    W25QXX_Read(ReadData,testAddr,5);
+    uart_printf("Read Data %08x\r\n",testAddr);
+    for(int i = 0;i<5;i++)
+    {
+        uart_printf("%02x ",ReadData[i]);
+    }
+    uart_printf("\r\n");
+    // 2.擦除 指定地址的数据
+    uart_printf("Erase Addr start %08x\r\n",testAddr);
+    W25QXX_Erase_Sector(testAddr/4096);
+    uart_printf("\r\n");
+    // 3.写入 指定地址的数据
+    W25QXX_Write_Page(WriteData,testAddr,5);
+    uart_printf("Write Data %08x\r\n",testAddr);
+    for(int i = 0;i<5;i++)
+    {
+        uart_printf("%02x ",WriteData[i]);
+    }
+    uart_printf("\r\n");
+    // 4.读取 写入地址的数据
+    W25QXX_Read(ReadData,testAddr,5);
+    uart_printf("Read Data %08x\r\n",testAddr);
+    for(int i = 0;i<5;i++)
+    {
+        uart_printf("%02x ",ReadData[i]);
+    }
+    uart_printf("\r\n");
 }

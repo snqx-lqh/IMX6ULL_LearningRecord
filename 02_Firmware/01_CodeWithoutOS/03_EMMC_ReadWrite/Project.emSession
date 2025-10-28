@@ -14,7 +14,6 @@
   <ProjectSessionItem path="Project;Project;Setup"/>
   <ProjectSessionItem path="Project;Project;Source"/>
   <ProjectSessionItem path="Project;Project;Source;APP"/>
-  <ProjectSessionItem path="Project;Project;Source;BSP"/>
   <ProjectSessionItem path="Project;Project;Source;drivers"/>
   <ProjectSessionItem path="Project;Project;Source;middleware"/>
   <ProjectSessionItem path="Project;Project;Source;middleware;sdmmc"/>
@@ -46,7 +45,7 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="20" useTextEdit="1" path="Source/APP/main.c" left="0" selected="1" top="31" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="20" useTextEdit="1" path="Source/APP/main.c" left="0" selected="1" top="20" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="24" y="75" useTextEdit="1" path="Source/BSP/bsp_emmc.c" left="0" top="60" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="188" useTextEdit="1" path="Source/SYSTEM/board.h" left="0" top="166" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="16" y="7" useTextEdit="1" path="Source/BSP/bsp_emmc.h" left="0" top="0" codecName="Default"/>

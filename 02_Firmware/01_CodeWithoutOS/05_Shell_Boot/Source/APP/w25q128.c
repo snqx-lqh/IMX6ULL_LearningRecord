@@ -220,7 +220,7 @@ void W25QXX_Erase_Chip(void)
 void W25QXX_Erase_Sector(uint32_t Dst_Addr)   
 {  
 	//监视falsh擦除情况,测试用   
- 	uart_printf("fe:%x\r\n",Dst_Addr);	  
+ 	uart_printf("erase start addr:%x\r\n",Dst_Addr*4096);	  
  	Dst_Addr*=4096;
     W25QXX_Write_Enable();                  	//SET WEL 	 
     W25QXX_Wait_Busy();   
@@ -241,6 +241,16 @@ void W25QXX_Erase_Sectors(uint32_t SectorAddr, uint32_t n)
     }
 }
 
+void W25QXX_Erase_Length(uint32_t StartAddr, uint32_t len)
+{
+    uint32_t startSector = StartAddr / 4096;
+    uint32_t endSector   = (StartAddr + len)/4096;
+    
+    for (uint32_t i = startSector; i < endSector; i++) {
+        W25QXX_Erase_Sector(i);   // 内部已经做了 4 k 地址偏移
+    }
+}
+ 
 //等待空闲
 void W25QXX_Wait_Busy(void)   
 {   

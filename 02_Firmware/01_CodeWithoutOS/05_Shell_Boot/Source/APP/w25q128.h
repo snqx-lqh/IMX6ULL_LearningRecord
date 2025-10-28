@@ -51,6 +51,8 @@ uint16_t  W25QXX_ReadID(void);  	    		//读取FLASH ID
 uint8_t	 W25QXX_ReadSR(void);        		//读取状态寄存器 
 void W25QXX_Write_SR(uint8_t sr);  			//写状态寄存器
 void W25QXX_Write_Enable(void);  		//写使能 
+void W25QXX_Write_Page(uint8_t* pBuffer,uint32_t WriteAddr,uint16_t NumByteToWrite);
+void W25QXX_Erase_Length(uint32_t StartAddr, uint32_t len);
 void W25QXX_Write_Disable(void);		//写保护
 void W25QXX_Write_NoCheck(uint8_t* pBuffer,uint32_t WriteAddr,uint16_t NumByteToWrite);
 void W25QXX_Read(uint8_t* pBuffer,uint32_t ReadAddr,uint16_t NumByteToRead);   //读取flash
